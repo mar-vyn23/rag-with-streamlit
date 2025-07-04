@@ -14,7 +14,7 @@ def load_vectorstore():
     loader = DirectoryLoader("data", glob="**/*.txt")
     docs = loader.load()
 
-    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
     texts = text_splitter.split_documents(docs)
 
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
@@ -23,15 +23,17 @@ def load_vectorstore():
 
 retriever = load_vectorstore().as_retriever()
 
-# Use Groq LLM
+#Groq LLM
 llm = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
-    model_name="llama-3.1-8b-instant"
+    model_name="llama-3.1-8b-instant",
+    temperature=0.7,
+    # max_tokens=50,
 )
 
 qa_chain = RetrievalQA.from_chain_type(
-    llm=llm,
     chain_type="stuff",
+    llm=llm,
     retriever=retriever,
 )
 
