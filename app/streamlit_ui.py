@@ -1,8 +1,8 @@
 import streamlit as st
 from rag_pipeline import ask_question
 
-st.set_page_config(page_title="War and Peace Q&A", layout="wide")
-st.title("Q&A About *War and Peace*")
+st.set_page_config(page_title="War and Peace Chatbot", layout="wide")
+st.title("Chat About *War and Peace*")
 
 # Sidebar instructions
 with st.sidebar:

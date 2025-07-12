@@ -8,6 +8,7 @@ __pycache__/
 
 #ignore chroma vector store
 chroma_db/
+chroma/
 
 # Distribution / packaging
 .Python
