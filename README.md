@@ -76,3 +76,10 @@ Before running the app, you need to create a `.env` file in the root directory a
    streamlit run streamlit_ui.py
 
    ```
+
+1. Run the url below in your favourite browser to check it out:
+
+   ```sh
+   http://localhost:8501/
+
+   ```
