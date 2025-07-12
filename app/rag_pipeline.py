@@ -18,7 +18,7 @@ def load_vectorstore():
     #split the document
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size = 250,
-        chunk_overlap = 50,
+        chunk_overlap = 100,
     )
 
     texts = text_splitter.create_documents([document])
@@ -29,10 +29,15 @@ def load_vectorstore():
         model_kwargs = {'device':'cpu'}
         )
 
+    # persistent_client = chromadb.PersistentClient()
+    # collection = persistent_client.get_or_create_collection("collection_name")
+    # collection.add(ids=["1", "2", "3"], documents=["a", "b", "c"])
+    
     #database
     vectorstore = Chroma(
-        persist_directory="chroma_db", 
-        embedding_function=embeddings
+        collection_name = "collection_name", 
+        embedding_function=embeddings,
+        persist_directory="chroma_db",
     )
 
     return vectorstore
@@ -44,7 +49,7 @@ llm = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
     model_name="llama-3.1-8b-instant",
     temperature=0.8,
-    # max_tokens=50,
+    max_tokens=50,
 )
 
 qa_chain = RetrievalQA.from_chain_type(
