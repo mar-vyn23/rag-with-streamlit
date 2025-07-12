@@ -1,11 +1,16 @@
-version: "3.9"
-
 services:
-  rag-app:
-    build: .
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8501:8501"
+    env_file:
+      - .env
+
+  chroma:
+    image: chromadb/chroma:latest
     volumes:
-      - ./data:/app/data
-    environment:
-      - GROQ_API_KEY=${GROQ_API_KEY}
+      - ./chroma_db:/data
+    ports:
+      - "8765:8000"

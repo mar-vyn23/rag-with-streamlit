@@ -19,7 +19,7 @@ To install and run the chatbot locally, follow these steps:
 
 ### Prerequisites
 
-- Python 3.10 or higher
+- Python 3.13.2 or higher
 - Git
 - Virtual environment tool (e.g., `.venv` or `virtualenv`)
 
