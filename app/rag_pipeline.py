@@ -49,7 +49,7 @@ llm = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
     model_name="llama-3.1-8b-instant",
     temperature=0.8,
-    max_tokens=50,
+    max_tokens=200,
 )
 
 qa_chain = RetrievalQA.from_chain_type(
