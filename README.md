@@ -10,6 +10,7 @@ relevant text chunks from the book and generating responses using an LLM.
 ## Documentation
 
 Full setup and usage instructions are provided below.
+However for full documentation visit https://rag-with-streamlit.onrender.com/
 
 ---
 
