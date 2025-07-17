@@ -28,10 +28,6 @@ def load_vectorstore():
         model_name="sentence-transformers/all-mpnet-base-v2",
         model_kwargs = {'device':'cpu'}
         )
-
-    # persistent_client = chromadb.PersistentClient()
-    # collection = persistent_client.get_or_create_collection("collection_name")
-    # collection.add(ids=["1", "2", "3"], documents=["a", "b", "c"])
     
     #database
     vectorstore = Chroma(
@@ -52,6 +48,7 @@ llm = ChatGroq(
     max_tokens=200,
 )
 
+#building the chain
 qa_chain = RetrievalQA.from_chain_type(
     chain_type="stuff",
     llm=llm,
